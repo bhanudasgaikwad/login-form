@@ -1,0 +1,106 @@
+<div class="login-wrapper">
+  <main class="login-container">
+    <section class="login-picture-section">
+        <div class="login-picture-content">
+            <h1>Login to Wingify</h1>
+            <p>
+                Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
+            </p>
+        </div>
+    </section>
+    <section class="login-form-section">
+        <h2>Create an account</h2>
+        <form [formGroup]="signUpForm" (ngSubmit)="validateUserDetails()" novalidate>
+            <div class="form-group position-relative">
+                <label for="emailAddress">Enter your email</label>
+                <div class="form-inner-group position-relative">
+                    <input type="email" id="emailAddress" formControlName="emailAddress" required minlength="4">
+                    
+                    <div *ngIf="signUpForm.controls.emailAddress.invalid && (signUpForm.controls.emailAddress.dirty || signUpForm.controls.emailAddress.touched)"
+                    class="notification notification-error-msg">
+                        <p *ngIf="signUpForm.controls.emailAddress.errors.required">
+                            Email address is required.
+                        </p>
+
+                        <p *ngIf="signUpForm.controls.emailAddress.errors.minlength">
+                            Please add valid email address.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group position-relative">
+                <label>Date of birth(Optional)</label>
+
+                <div class="d-flex">
+                    <div class="d-row">
+                        <label for="date" class="small-text">Date</label>
+                        <input type="text" id="date" formControlName="date" maxlength="2">
+                    </div>
+
+                    <div class="d-row">
+                        <label for="month"  class="small-text">Month</label>
+                        <select id="month" formControlName="month">
+                            <option value="{{month}}" *ngFor="let month of months; index as i">
+                                {{month}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="d-row">
+                        <label for="year" class="small-text">Year</label>
+                        <select id="year" formControlName="year">
+                           <option value="{{year}}" *ngFor="let year of years; index as i">
+                               {{year}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="password">Choose a strong password</label>
+                <div class="form-inner-group position-relative">
+                    <input type="password" id="password"  formControlName="password" required minlength="4">
+                    
+                    <div *ngIf="signUpForm.controls.password.invalid && (signUpForm.controls.password.dirty || signUpForm.controls.password.touched)"
+                    class="notification notification-error-msg">
+                    
+                        <p *ngIf="signUpForm.controls.password.errors.required">
+                            Password is required.
+                        </p>
+
+                        <p *ngIf="signUpForm.controls.password.errors.minlength">
+                            Password must be at least 4 characters long.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group position-relative">
+                <label for="individual">Are you an agency or individual?</label>
+                <div class="d-flex">
+                    <div class="d-row">
+                        <label for="individual" class="small-text">
+                            <input type="radio" id="individual" value="individual" formControlName="userType">
+                            Individual
+                        </label>
+                    </div>
+
+                    <div class="d-row">
+                        <label for="agency"  class="small-text">
+                            <input type="radio" id="agency" value="agency" formControlName="userType">
+                            Agency
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="!signUpForm.valid" class="btn">Submit</button>
+            </div>
+        </form>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,19 @@
+@import '../../assets/styles/mixins.scss';
+
+.d-flex {
+    @include flexbox(flex, row, wrap, flex-start, flex-start);
+    
+    .d-row {
+        flex-grow: 1;
+        flex-basis: 33%;
+        padding-right: 1rem;
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.position-relative {
+    position: relative;
+}

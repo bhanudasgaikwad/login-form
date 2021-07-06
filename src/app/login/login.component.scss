@@ -1,0 +1,111 @@
+@import '../../assets/styles/theme.scss';
+@import '../../assets/styles/mixins.scss';
+@import '../../assets/styles/utility.scss';
+
+.login-wrapper {
+    @include flexbox(flex, row, wrap, center, center);
+    height: 100vh;
+
+    @media only screen and (max-width: 48rem) {
+        @include flexbox(flex, row, wrap, flex-start, center);
+    }
+
+    .login-container {
+        @include flexbox(flex, row, wrap, stretch, center);
+        background-color: $white;
+        border-radius: 0.3rem;
+        box-shadow: 0 0 10px rgba(192, 108, 108, 0.10);
+        width: 55%;
+
+        @media only screen and (max-width: 48rem) {        
+            @include flexbox(flex, column, nowrap, center, center);
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        section.login-picture-section,
+        section.login-form-section {
+            width: 50%;
+            padding: 2rem;
+
+            @media only screen and (max-width: 48rem) {  
+                width: 100%;
+                padding: 4rem;
+            }
+        }
+
+        section.login-picture-section {
+            @include flexbox(flex, column, nowrap, center, center);
+            background-image:url('../../assets/images/login-background.jpg');
+            background-repeat: no-repeat;
+
+            h1,
+            p {
+                color: $white;
+            }
+
+            p {
+                font-weight: 400;
+                font-size: 1.1rem;
+                line-height: 1.5rem;
+            }
+        }
+
+        .form-group {
+            padding-bottom: 1.25rem;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+
+            label.form-label,
+            label {
+                color: $black;
+                display: block;
+                font-weight: 500;
+                padding-bottom: 0.5rem;
+
+                &.small-text{
+                    color: $grey;
+                    font-size: 0.8rem;
+                }
+            }
+
+            input.ng-invalid.ng-touched {
+                border: solid 2px $red;
+            }
+        }
+
+        .notification {
+            position: absolute;
+            top: 0;
+            left: 105%;
+            white-space: nowrap;
+            
+            &:before {
+                background-color: $red;
+                content: '';
+                display: block;
+                height: 1rem;
+                left: -0.2rem;
+                position: absolute;
+                top: 0.2rem;
+                transform: rotate(45deg);
+                width: 1rem;
+            }
+
+            @media only screen and (max-width: 48rem) {  
+                position: relative;
+                left: 0;
+                top: 1rem;
+
+                &:before {
+                    left: 0.5rem;                  
+                    top: -0.4rem;
+                }
+            }
+        }
+    }
+}
+
